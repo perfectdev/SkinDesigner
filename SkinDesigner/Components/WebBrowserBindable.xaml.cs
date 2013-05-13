@@ -26,7 +26,11 @@ namespace SkinDesigner.Components {
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e) {
             base.OnPropertyChanged(e);
             if (e.Property == NavigationUrlProperty) {
-                Browser.Source = new Uri(e.NewValue as string);
+                if (!string.IsNullOrEmpty(e.NewValue as string)) {
+                    Uri uri;
+                    Uri.TryCreate(e.NewValue as string, UriKind.Absolute, out uri);
+                    Browser.Source = uri;
+                }
             }
         }
     }
