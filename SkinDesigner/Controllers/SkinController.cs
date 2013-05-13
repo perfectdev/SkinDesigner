@@ -695,7 +695,7 @@ namespace SkinDesigner.Controllers {
             var imageMap = (BitmapImage) Core.GetImageSourceFromFileName(GetFullPath(artBgMap.Path));
             var bmp = Core.BitmapImage2Bitmap(imageMap);
 
-            var transparentColor = Color.FromKnownColor(KnownColor.Transparent);
+            var transparentColor = bmp.GetPixel(0, 0);
             AppProgressBarController.SetValue(0, bmp.Height, "Analyzing image map...");
             AppProgressBarController.Show();
             var i = 0;
@@ -739,7 +739,7 @@ namespace SkinDesigner.Controllers {
             var bmp = Core.BitmapImage2Bitmap(imageMap);
             bmp = new Bitmap(bmp.Width, bmp.Height);
             using (var g = Graphics.FromImage(bmp)) {
-                g.Clear(Color.FromKnownColor(KnownColor.Transparent));
+                g.Clear(Color.FromArgb(255, 1, 1, 1));
                 foreach (var pos in element.ColorPositions) {
                     g.FillRectangle(
                             new SolidBrush(pos.MapColor),
