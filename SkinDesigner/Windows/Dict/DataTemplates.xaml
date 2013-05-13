@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:models="clr-namespace:SkinDesigner.Models">
+    <HierarchicalDataTemplate x:Key="SkinAppTreeViewItemTemplate" 
+                              DataType="models:TreeViewItemSkinElement"
+                              ItemsSource="{Binding Path=Items}">
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding Path=Icon}" VerticalAlignment="Center" Height="16" Margin="2"/>
+            <TextBlock Text="{Binding Path=Text}" Margin="5 0" VerticalAlignment="Center"/>
+        </StackPanel>
+    </HierarchicalDataTemplate>
+</ResourceDictionary>

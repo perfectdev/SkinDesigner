@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EE4A0B48-9BEA-4230-AE11-1DDFEFDFC626}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkinDesigner</RootNamespace>
+    <AssemblyName>SkinDesigner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit">
+      <HintPath>..\packages\AvalonEdit.4.3.1.9430\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.1.9.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.1.9.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Components\WebBrowserBindable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Dict\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Dict\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ExceptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\SkinButtonState.cs" />
+    <Compile Include="Components\SkinElementControl.cs" />
+    <Compile Include="Components\WebBrowserBindable.xaml.cs">
+      <DependentUpon>WebBrowserBindable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AppProgressBarController.cs" />
+    <Compile Include="Controllers\ExceptionController.cs" />
+    <Compile Include="Controllers\SkinController.cs" />
+    <Compile Include="Models\ColorPosition.cs" />
+    <Compile Include="Models\SkinApp.cs" />
+    <Compile Include="Models\SkinAppOption.cs" />
+    <Compile Include="Models\SkinAppStyle.cs" />
+    <Compile Include="Models\SkinArt.cs" />
+    <Compile Include="Models\SkinArtImage.cs" />
+    <Compile Include="Models\SkinBrowser.cs" />
+    <Compile Include="Models\SkinButton.cs" />
+    <Compile Include="Models\SkinComboBox.cs" />
+    <Compile Include="Models\SkinCommand.cs" />
+    <Compile Include="Models\SkinElement.cs" />
+    <Compile Include="Models\SkinEvent.cs" />
+    <Compile Include="Models\SkinEventType.cs" />
+    <Compile Include="Models\SkinFolder.cs" />
+    <Compile Include="Models\SkinFolderAppOptions.cs" />
+    <Compile Include="Models\SkinFolderAppStyles.cs" />
+    <Compile Include="Models\SkinFolderAppWindows.cs" />
+    <Compile Include="Models\SkinFolderBrowsers.cs" />
+    <Compile Include="Models\SkinFolderButtons.cs" />
+    <Compile Include="Models\SkinFolderComboBoxes.cs" />
+    <Compile Include="Models\SkinFolderCommands.cs" />
+    <Compile Include="Models\SkinFolderEvents.cs" />
+    <Compile Include="Models\SkinFolderListBoxes.cs" />
+    <Compile Include="Models\SkinFolderProgressBars.cs" />
+    <Compile Include="Models\SkinFolderScrollArrows.cs" />
+    <Compile Include="Models\SkinFolderScrollBars.cs" />
+    <Compile Include="Models\SkinFolderSliders.cs" />
+    <Compile Include="Models\SkinListBox.cs" />
+    <Compile Include="Models\SkinProgressBar.cs" />
+    <Compile Include="Models\SkinScrollArrow.cs" />
+    <Compile Include="Models\SkinScrollBar.cs" />
+    <Compile Include="Models\SkinSlider.cs" />
+    <Compile Include="Models\SkinTextAligh.cs" />
+    <Compile Include="Models\SkinWindow.cs" />
+    <Compile Include="Models\TreeViewItemSkinElement.cs" />
+    <Compile Include="Utils\Core.cs" />
+    <Compile Include="Utils\RefreshTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\ExceptionWindow.xaml.cs">
+      <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\form.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\vertical_splitter_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\option.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\style.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\slider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\scroll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\scrollarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\progressbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\event.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\command.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\listbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\combobox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\art.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
