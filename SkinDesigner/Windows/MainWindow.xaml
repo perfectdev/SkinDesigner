@@ -82,7 +82,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="0"/>
                     </Grid.RowDefinitions>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -98,9 +98,19 @@
                                 <CheckBox x:Name="ChkPreviewMode" Content="Preview mode" Checked="ChkPreviewMode_OnChecked" Unchecked="ChkPreviewMode_OnUnchecked"/>
                             </StackPanel>
                         </Grid>
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0 0 5 5" Grid.Row="1">
-                            <Canvas x:Name="CanvasPreview" Background="Black" ClipToBounds="True"/>
+                        <ScrollViewer x:Name="SvCanvas" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0 0 5 5" Grid.Row="1">
+                            <Canvas x:Name="CanvasPreview" Background="Black" ClipToBounds="True" Width="1920" Height="1200"/>
                         </ScrollViewer>
+                        <Grid x:Name="RenderImage" Grid.Row="1" Background="Black" Visibility="Hidden">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="1" Width="128" Source="../Resources/render.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="2" Text="Please wait..." Foreground="GreenYellow" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+                        </Grid>
                     </Grid>
                     <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="3" ResizeDirection="Rows" ShowsPreview="False" BorderThickness="1" Margin="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
                     <Grid Grid.Row="1" Margin="0 0 5 0">

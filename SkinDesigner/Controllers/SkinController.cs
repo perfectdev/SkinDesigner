@@ -29,12 +29,22 @@ namespace SkinDesigner.Controllers {
         public string FileName { get; set; }
         public string PatcherFolder { get; private set; }
         public bool IsPreviewMode { get; set; }
+        public Grid RenderImage { get; set; }
+        public ScrollViewer ScrollViewer { get; set; }
 
-        public SkinController(Canvas canvas, TextEditor xmlEditor, AppProgressBarController appProgressBarController) {
+        public SkinController(Canvas canvas, TextEditor xmlEditor, AppProgressBarController appProgressBarController, Grid renderImage, ScrollViewer scrollViewer) {
             Canvas = canvas;
+            RenderImage = renderImage;
+            ScrollViewer = scrollViewer;
             AppProgressBarController = appProgressBarController;
             XmlEditor = xmlEditor;
             SkinApp = new SkinApp();
+        }
+
+        private void RenderTime(bool state) {
+            ScrollViewer.Visibility = state ? Visibility.Hidden : Visibility.Visible;
+            RenderImage.Visibility = state ? Visibility.Visible : Visibility.Hidden;
+            Core.DoEvents();
         }
 
         public void SelectElement(SkinElementControl element) {
@@ -352,8 +362,8 @@ namespace SkinDesigner.Controllers {
         }
 
         public List<TreeViewItemSkinElement> GetTreeViewItemsSource() {
-            AppProgressBarController.SetValue(0, 0, "Building structures...");
-            AppProgressBarController.ShowIndeterminate();
+            //AppProgressBarController.SetValue(0, 0, "Building structures...");
+            //AppProgressBarController.ShowIndeterminate();
 
             var items = new List<TreeViewItemSkinElement>();
 
@@ -512,7 +522,7 @@ namespace SkinDesigner.Controllers {
             nodeSkinApp.Items.Add(nodeSkinAppWindows);
             items.Add(nodeSkinApp);
 
-            AppProgressBarController.Hide();
+            //AppProgressBarController.Hide();
 
             return items;
         }
@@ -634,25 +644,27 @@ namespace SkinDesigner.Controllers {
         }
 
         private void RedrawWindow(SkinWindow window) {
-            AppProgressBarController.SetValue(0, 0, "Redraw window...");
-            AppProgressBarController.ShowIndeterminate();
+            RenderTime(true);
+            //AppProgressBarController.SetValue(0, 0, "Redraw window...");
+            //AppProgressBarController.ShowIndeterminate();
             Canvas.Children.Clear();
             var artBgMap = window.Art.Images.Any(t => t.Type == "MapImage") ? window.Art.Images.First(t => t.Type == "MapImage") : new SkinArtImage();
             if (!window.IsAlreadyDrawn)
                 RebuildImageMap(artBgMap, window);
-            AppProgressBarController.DoEvents();
+            //AppProgressBarController.DoEvents();
             window.IsAlreadyDrawn = true;
             Core.ClearMemory();
             var artBgImage = window.Art.Images.Any(t => t.Type == "BackgroundImage") ? window.Art.Images.First(t => t.Type == "BackgroundImage") : new SkinArtImage();
             var bgImage = (BitmapImage) Core.GetImageSourceFromFileName(GetFullPath(artBgImage.Path));
             Canvas.Children.Add(new Image { Source = bgImage, Width = bgImage.PixelWidth, Height = bgImage.PixelHeight });
-            AppProgressBarController.DoEvents();
+            //AppProgressBarController.DoEvents();
             DrawButtons(window);
             DrawComboBoxes(window);
             DrawProgressBars(window);
             DrawBrowsers(window);
             DrawSliders(window);
-            AppProgressBarController.Hide();
+            //AppProgressBarController.Hide();
+            RenderTime(false);
         }
 
         private void DrawButtons(SkinWindow window) {

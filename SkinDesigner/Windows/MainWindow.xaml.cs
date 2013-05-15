@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
-using SkinDesigner.Components;
 using SkinDesigner.Controllers;
 using SkinDesigner.Models;
 using SkinDesigner.Utils;
@@ -21,7 +20,7 @@ namespace SkinDesigner.Windows {
             InitializeComponent();
 
             AppProgressBarController = new AppProgressBarController(ProgressForm, AppProgressBar, AppProgressBarLabel);
-            SkinController = new SkinController(CanvasPreview, TeFile, AppProgressBarController);
+            SkinController = new SkinController(CanvasPreview, TeFile, AppProgressBarController, RenderImage, SvCanvas);
             CanvasPreview.MouseMove += CanvasPreviewOnMouseMove;
             CanvasPreview.MouseDown += CanvasPreviewOnPreviewMouseDown;
             CanvasPreview.PreviewMouseUp += CanvasPreviewOnPreviewMouseUp;
@@ -60,17 +59,6 @@ namespace SkinDesigner.Windows {
 
             ExceptionController = ExceptionController ?? new ExceptionController();
             ExceptionController.ShowException(e.Exception);
-        }
-
-        private void GenTestElements() {
-            CanvasPreview.Children.Add(
-                    new SkinElementControl(
-                            SkinController,
-                            new SkinButton {
-                                Name = "TestButton1"
-                            }
-                        )
-                );
         }
 
         private void CanvasPreviewOnPreviewMouseDown(object sender, MouseButtonEventArgs e) {
