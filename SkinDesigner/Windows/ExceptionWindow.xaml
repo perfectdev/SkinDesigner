@@ -5,11 +5,12 @@
         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="385">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBox x:Name="TxtMessage" AcceptsReturn="True" IsReadOnly="True" IsReadOnlyCaretVisible="True"
+                 TextWrapping="WrapWithOverflow"
                     Margin="5"
                     HorizontalScrollBarVisibility="Auto"
                     VerticalScrollBarVisibility="Auto"

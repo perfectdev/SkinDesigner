@@ -1033,10 +1033,18 @@ namespace SkinDesigner.Controllers {
                 }
 
                 xmlSkinApp.AppendChild(xmlWindow);
-                AppProgressBarController.Hide();
             }
+            AppProgressBarController.Hide();
 
             XmlEditor.Text = Core.PrettyXml(xmlDoc.InnerXml);
+            var dlg = new SaveFileDialog {
+                Title = "Сохранить файл разметки SkinApp",
+                Filter = "XML File (*.xml)|*.xml",
+                FileName = "mainuni.xml"
+            };
+            if (!(bool) dlg.ShowDialog()) return;
+            FileName = dlg.FileName;
+            if (string.IsNullOrEmpty(FileName)) return;
             File.WriteAllText(FileName, XmlEditor.Text, Encoding.GetEncoding("utf-16LE"));
         }
     }
